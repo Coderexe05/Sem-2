@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Grade Calculator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        .container {
+            border: 1px solid black;
+            padding: 15px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Grade Calculator</h2>
+        
+        <p>
+            Number of Subjects:<br>
+            <input type="number" id="subjects">
+        </p>
+        
+        <button onclick="calculateResult()">Calculate</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculateResult() {
+            let n = parseInt(document.getElementById("subjects").value);
+            
+            if (isNaN(n) || n <= 0) {
+                alert("Please enter a valid number of subjects.");
+                return;
+            }
+
+            let totalmarks = 0; 
+
+            for (let i = 1; i <= n; i++) {
+                let marks = parseFloat(prompt("Enter marks for subject " + i + ":"));
+                
+                if (isNaN(marks)) {
+                    alert("Invalid marks entered.");
+                    return;
+                }
+                totalmarks += marks;
+            }
+
+            let averagemarks = totalmarks / n;
+            let grade;
+            let result;
+
+            if (averagemarks >= 90) {
+                grade = "A+";
+            } else if (averagemarks >= 80) {
+                grade = "A";
+            } else if (averagemarks >= 70) {
+                grade = "B";
+            } else if (averagemarks >= 60) {
+                grade = "C";
+            } else if (averagemarks >= 50) {
+                grade = "D";
+            } else {
+                grade = "E";
+            }
+
+            if (averagemarks >= 50) {
+                result = "Pass";
+            } else {
+                result = "Fail";
+            }
+
+            document.getElementById("result").innerHTML = 
+                "Total Marks: " + totalmarks + "<br>" +
+                "Average Marks: " + averagemarks.toFixed(2) + "<br>" +
+                "Grade: " + grade + "<br>" +
+                "Result: " + result;
+        }
+    </script>
+</body>
+</html>
