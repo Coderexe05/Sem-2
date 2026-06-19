@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="n">
+<button onclick="f()">Run</button>
+<p id="p"></p>
+
+<script>
+function f() {
+    let v = document.getElementById('n').value;
+    let res = (v % 2 == 0) ? "Even" : "Odd";
+    res += "<br>";
+
+    for (let i = 1; i <= v; i++) {
+        res += i + " ";
+    }
+    document.getElementById('p').innerHTML = res;
+}
+</script>
+</body>
+</html>
